@@ -1,0 +1,37 @@
+<Meta>
+  <title>Residents Fish With You</title>
+  <id>omegaplatinum.elin.residentsfishwithyou</id>
+  <author>OmegaPlatinum</author>
+  <loadPriority>100</loadPriority>
+  <description>
+    When you start fishing, residents with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is nearby. Residents will also drop their fishing items at your location.
+    あなたが釣りを開始すると、釣りの趣味または仕事を持つ住人があなたの場所に移動し、近くに[b]釣り場の立札[/b]がある場合、釣りを開始します。また、住人は釣りアイテムをあなたの場所にドロップします。
+
+    [h1] Features [/h1]
+    [list]
+    [*] Residents with a fishing hobby or fishing work will actively participate in fishing when you start fishing.
+    [*] Requires a [b]Fishing Sign[/b] near your location for residents to join.
+    [*] Residents drop their fishing items at your position.
+    [/list]
+
+    [h1] Compatibility [/h1]
+    This mod works with existing save files.
+
+    Supports Game Version: 0.23.67
+
+    [h1] 特徴 [/h1]
+    [list]
+    [*] 釣りの趣味または仕事を持つ住人が、あなたが釣りを開始するとその場に移動します。
+    [*] 住人が釣りを始めるには、近くに[b]釣り場の立札[/b]が必要です。
+    [*] 住人は釣りアイテムをあなたの位置にドロップします。
+    [/list]
+
+    [h1] 互換性 [/h1]
+    このMODは既存のセーブデータと完全に互換性があり、新しいプレイスルーは不要です。
+
+    対応ゲームバージョン: 0.23.67
+  </description>
+  <tags>General,Balance</tags>
+  <visibility>Public</visibility>
+  <version>0.23.67</version>
+</Meta>
