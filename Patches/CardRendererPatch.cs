@@ -4,7 +4,8 @@ namespace ResidentsFishWithYou.Patches
     {
         public static bool PlayAnimePrefix(CardRenderer __instance, AnimeID id)
         {
-            if (EClass.core?.IsGameStarted == false ||
+            if (ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value == false ||
+                EClass.core?.IsGameStarted == false ||
                 EClass._zone?.IsPCFaction == false ||
                 id != AnimeID.Jump)
             {

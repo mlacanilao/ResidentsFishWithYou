@@ -4,8 +4,11 @@ namespace ResidentsFishWithYou.Patches
     {
         public static bool PickPrefix(Chara __instance, Thing t)
         {
-            if (EClass.core?.IsGameStarted == false ||
-                __instance.IsPC == false)
+            if (ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value == false ||
+                EClass.core?.IsGameStarted == false ||
+                __instance.IsPC == false ||
+                __instance.currentZone?.IsPCFaction == false ||
+                __instance.ai is AI_Fish == false)
             {
                 return true;
             }

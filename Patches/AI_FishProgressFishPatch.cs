@@ -2,21 +2,47 @@ namespace ResidentsFishWithYou.Patches
 {
     public static class AI_FishProgressFishPatch
     {
-        public static void OnStartPrefix(AI_Fish.ProgressFish __instance)
+        public static bool OnStartPrefix(AI_Fish.ProgressFish __instance)
         {
+            if (EClass.core?.IsGameStarted == false)
+            {
+                return true;
+            }
+            
+            if (ResidentsFishWithYouConfig.EnableRequireBait?.Value == true && 
+                __instance.owner?.IsPC == false)
+            {
+                var inventory = EClass.pc?.things;
+
+                if (inventory != null && inventory.Count > 0)
+                {
+                    Thing bait = inventory.Find<TraitBait>();
+
+                    if (bait != null && bait.Num > 0)
+                    {
+                        bait.ModNum(a:-1, notify: true);
+                    }
+                    else
+                    {
+                        __instance.Cancel();
+                        return false;
+                    }
+                }
+            }
+            
             if (__instance.owner?.IsPC == false)
             {
-                return;
+                return true;
             }
 
             if (EClass._zone is null)
             {
-                return;
+                return true;
             }
 
             if (EClass._zone?.branch is null)
             {
-                return;
+                return true;
             }
 
             foreach (Chara chara in EClass._zone?.branch?.members)
@@ -71,6 +97,8 @@ namespace ResidentsFishWithYou.Patches
                     }
                 }
             }
+
+            return true;
         }
     }
 }

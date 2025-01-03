@@ -4,32 +4,59 @@
   <author>OmegaPlatinum</author>
   <loadPriority>100</loadPriority>
   <description>
-    When you start fishing, residents with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is nearby. Residents will place their fishing items into shared containers.
-    あなたが釣りを開始すると、釣りの趣味や仕事を持つ住人が近くに[b]釣り場の立札[/b]がある場合、釣りを開始し、釣りアイテムを共有コンテナに入れます。
-
+    When you start fishing, residents with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is nearby. Residents will also drop their fishing items at your location.
+    あなたが釣りを開始すると、釣りの趣味または仕事を持つ住人があなたの場所に移動し、近くに[b]釣り場の立札[/b]がある場合、釣りを開始します。また、住人は釣りアイテムをあなたの場所にドロップします。
+    
     [h1] Features [/h1]
     [list]
     [*] Residents with a fishing hobby or fishing work will actively participate in fishing when you start fishing.
     [*] Requires a [b]Fishing Sign[/b] near your location for residents to join.
-    [*] Residents place their fishing items into shared containers like [b]Cooler Boxes[/b] or [b]Fridges[/b].
-    [*] If shared containers are full, items will drop at your position.
+    [*] Residents drop their fishing items at your position.
+    [*] Optionally enable automatic placement of fishing items into shared containers for both residents and players.
+    [*] Optionally require residents to use your bait to start fishing.
     [/list]
 
     [h1] Compatibility [/h1]
     This mod works with existing save files.
 
+    [h1] Configuration [/h1]
+    Adjust these settings via the configuration file:
+
+    [h2] Enable Auto Place Fishing Items [/h2]
+    Enable or disable automatically placing fishing items into shared containers for both residents and players.
+    [code] Default: false [/code]
+
+    [h2] Enable Resident Require Bait [/h2]
+    Enable or disable requiring residents to use the player's bait to start fishing.
+    [code] Default: false [/code]
+
+    [h1] Configuration File Location [/h1]
+    [code] Steam\steamapps\common\Elin\BepInEx\config\omegaplatinum.elin.residentsfishwithyou.cfg [/code]
+
     Supports Game Version: 0.23.67
 
     [h1] 特徴 [/h1]
     [list]
-    [*] 釣りの趣味または仕事を持つ住人が、あなたが釣りを開始するとその場に移動します。
+    [*] 釣りの趣味や仕事を持つ住人が、あなたが釣りを開始するとその場に移動します。
     [*] 住人が釣りを始めるには、近くに[b]釣り場の立札[/b]が必要です。
-    [*] 住人は釣りアイテムを[b]クーラーボックス[/b]や[b]冷蔵庫[/b]などの共有コンテナに入れます。
-    [*] 共有コンテナが満杯の場合、アイテムはあなたの位置にドロップされます。
+    [*] 住人は釣りアイテムをあなたの位置にドロップします。
+    [*] 釣りアイテムを住人やプレイヤーが自動的に共有コンテナに配置するオプションがあります。
+    [*] 住人が釣りを開始する際にプレイヤーの餌を使用するオプションがあります。
     [/list]
 
-    [h1] 互換性 [/h1]
-    このMODは既存のセーブデータと完全に互換性があり、新しいプレイスルーは不要です。
+    [h1] 設定 [/h1]
+    これらの設定は設定ファイルから調整できます:
+
+    [h2] 釣りアイテムの自動配置設定 [/h2]
+    住人やプレイヤーが釣りアイテムを自動的に共有コンテナに配置するかどうかを設定します。
+    [code] デフォルト: false [/code]
+
+    [h2] 住人が餌を必要とする設定 [/h2]
+    住人が釣りを開始する際にプレイヤーの餌を使用するかどうかを設定します。
+    [code] デフォルト: false [/code]
+
+    [h1] 設定ファイルの場所 [/h1]
+    [code] Steam\steamapps\common\Elin\BepInEx\config\omegaplatinum.elin.residentsfishwithyou.cfg [/code]
 
     対応ゲームバージョン: 0.23.67
   </description>

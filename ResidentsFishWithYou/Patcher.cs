@@ -8,9 +8,9 @@ namespace ResidentsFishWithYou
     {
         [HarmonyPrefix]
         [HarmonyPatch(declaringType: typeof(AI_Fish.ProgressFish), methodName: nameof(AI_Fish.ProgressFish.OnStart))]
-        public static void AI_FishProgressFishOnStart(AI_Fish.ProgressFish __instance)
+        public static bool AI_FishProgressFishOnStart(AI_Fish.ProgressFish __instance)
         {
-            AI_FishProgressFishPatch.OnStartPrefix(__instance: __instance);
+            return AI_FishProgressFishPatch.OnStartPrefix(__instance: __instance);
         }
         
         [HarmonyPrefix]
