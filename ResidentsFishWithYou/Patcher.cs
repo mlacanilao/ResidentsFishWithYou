@@ -1,5 +1,6 @@
 using ResidentsFishWithYou.Patches;
 using HarmonyLib;
+using UnityEngine;
 
 namespace ResidentsFishWithYou
 {
@@ -17,6 +18,20 @@ namespace ResidentsFishWithYou
         public static void ZoneAddCard(Zone __instance, Card t, ref Point point)
         {
             ZonePatch.AddCardPrefix(__instance: __instance, t:t, point: ref point);
+        }
+        
+        [HarmonyPrefix]
+        [HarmonyPatch(declaringType: typeof(CardRenderer), methodName: nameof(CardRenderer.PlayAnime), argumentTypes: new[] { typeof(AnimeID), typeof(Vector3), typeof(bool) })]
+        public static bool CardRendererPlayAnime(CardRenderer __instance, AnimeID id)
+        {
+            return CardRendererPatch.PlayAnimePrefix(__instance: __instance, id: id);
+        }
+        
+        [HarmonyPrefix]
+        [HarmonyPatch(declaringType: typeof(Chara), methodName: nameof(Chara.Pick))]
+        public static bool CharaPick(Chara __instance, Thing t)
+        {
+            return CharaPatch.PickPrefix(__instance: __instance, t: t);
         }
     }
 }

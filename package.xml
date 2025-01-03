@@ -4,14 +4,15 @@
   <author>OmegaPlatinum</author>
   <loadPriority>100</loadPriority>
   <description>
-    When you start fishing, residents with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is nearby. Residents will also drop their fishing items at your location.
-    あなたが釣りを開始すると、釣りの趣味または仕事を持つ住人があなたの場所に移動し、近くに[b]釣り場の立札[/b]がある場合、釣りを開始します。また、住人は釣りアイテムをあなたの場所にドロップします。
+    When you start fishing, residents with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is nearby. Residents will place their fishing items into shared containers.
+    あなたが釣りを開始すると、釣りの趣味や仕事を持つ住人が近くに[b]釣り場の立札[/b]がある場合、釣りを開始し、釣りアイテムを共有コンテナに入れます。
 
     [h1] Features [/h1]
     [list]
     [*] Residents with a fishing hobby or fishing work will actively participate in fishing when you start fishing.
     [*] Requires a [b]Fishing Sign[/b] near your location for residents to join.
-    [*] Residents drop their fishing items at your position.
+    [*] Residents place their fishing items into shared containers like [b]Cooler Boxes[/b] or [b]Fridges[/b].
+    [*] If shared containers are full, items will drop at your position.
     [/list]
 
     [h1] Compatibility [/h1]
@@ -23,7 +24,8 @@
     [list]
     [*] 釣りの趣味または仕事を持つ住人が、あなたが釣りを開始するとその場に移動します。
     [*] 住人が釣りを始めるには、近くに[b]釣り場の立札[/b]が必要です。
-    [*] 住人は釣りアイテムをあなたの位置にドロップします。
+    [*] 住人は釣りアイテムを[b]クーラーボックス[/b]や[b]冷蔵庫[/b]などの共有コンテナに入れます。
+    [*] 共有コンテナが満杯の場合、アイテムはあなたの位置にドロップされます。
     [/list]
 
     [h1] 互換性 [/h1]
