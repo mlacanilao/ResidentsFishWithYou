@@ -5,7 +5,8 @@ namespace ResidentsFishWithYou.Patches
         public static void AddCardPrefix(Zone __instance, Card t, ref Point point)
         {
             if (EClass.core?.IsGameStarted == false ||
-                __instance?.IsPCFaction == false)
+                __instance?.IsPCFaction == false ||
+                EClass.pc?.ai is AI_Fish == false)
             {
                 return;
             }
@@ -18,7 +19,7 @@ namespace ResidentsFishWithYou.Patches
             {
                 return;
             }
-        
+
             point = EClass.pc?.pos;
         }
     }

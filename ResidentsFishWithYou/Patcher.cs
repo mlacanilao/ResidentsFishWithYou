@@ -29,9 +29,9 @@ namespace ResidentsFishWithYou
         
         [HarmonyPrefix]
         [HarmonyPatch(declaringType: typeof(Chara), methodName: nameof(Chara.Pick))]
-        public static bool CharaPick(Chara __instance, Thing t)
+        public static bool CharaPick()
         {
-            return CharaPatch.PickPrefix(__instance: __instance, t: t);
+            return CharaPatch.PickPrefix();
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ResidentsFishWithYou.Patches
 {
     public static class CardRendererPatch
@@ -7,7 +9,8 @@ namespace ResidentsFishWithYou.Patches
             if (ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value == false ||
                 EClass.core?.IsGameStarted == false ||
                 EClass._zone?.IsPCFaction == false ||
-                id != AnimeID.Jump)
+                id != AnimeID.Jump ||
+                EClass.pc?.ai is AI_Fish == false)
             {
                 return true;
             }
@@ -21,10 +24,15 @@ namespace ResidentsFishWithYou.Patches
                 return true;
             }
             
-            if (EClass._zone?.TryAddThingInSharedContainer(t: __instance.owner?.Thing, containers: null, add: true, msg: false,
-                    chara: null, sharedOnly: true) == false)
+            List<Thing> thingsToMove = new List<Thing>(EClass.pc?.pos?.Things);
+            
+            foreach (Thing thing in thingsToMove)
             {
-                EClass._map?.TrySmoothPick(cell: __instance.owner?.pos.cell, t: __instance.owner?.Thing, c: EClass.pc);
+                if (EClass._zone?.TryAddThingInSharedContainer(t: thing, containers: null, add: true, msg: false,
+                        chara: null, sharedOnly: true) == false)
+                {
+                    EClass._map?.TrySmoothPick(cell: EClass.pc?.pos?.cell, t: thing, c: EClass.pc);
+                }
             }
             
             return false;

@@ -7,7 +7,7 @@ namespace ResidentsFishWithYou
     {
         internal const string Guid = "omegaplatinum.elin.residentsfishwithyou";
         internal const string Name = "Residents Fish with You";
-        internal const string Version = "1.2.1.0";
+        internal const string Version = "1.3.2.0";
     }
 
     [BepInPlugin(GUID: ModInfo.Guid, Name: ModInfo.Name, Version: ModInfo.Version)]
