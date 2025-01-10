@@ -8,8 +8,10 @@ namespace ResidentsFishWithYou.Patches
             {
                 return true;
             }
+
+            bool enableRequireBait = ResidentsFishWithYouConfig.EnableRequireBait?.Value ?? false;
             
-            if (ResidentsFishWithYouConfig.EnableRequireBait?.Value == true && 
+            if (enableRequireBait == true && 
                 __instance.owner?.IsPC == false)
             {
                 var inventory = EClass.pc?.things;
@@ -30,17 +32,8 @@ namespace ResidentsFishWithYou.Patches
                 }
             }
             
-            if (__instance.owner?.IsPC == false)
-            {
-                return true;
-            }
-
-            if (EClass._zone is null)
-            {
-                return true;
-            }
-
-            if (EClass._zone?.branch is null)
+            if (__instance.owner?.IsPC == false ||
+                EClass._zone?.branch is null)
             {
                 return true;
             }

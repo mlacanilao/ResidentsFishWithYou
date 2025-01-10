@@ -4,7 +4,9 @@ namespace ResidentsFishWithYou.Patches
     {
         public static bool PickPrefix()
         {
-            if (ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value == false ||
+            bool enableAutoPlaceFishingItems = ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value ?? false;
+            
+            if (enableAutoPlaceFishingItems == false ||
                 EClass.core?.IsGameStarted == false ||
                 EClass._zone?.IsPCFaction == false ||
                 EClass.pc?.ai is AI_Fish == false)

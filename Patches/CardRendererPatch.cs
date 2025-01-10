@@ -6,7 +6,9 @@ namespace ResidentsFishWithYou.Patches
     {
         public static bool PlayAnimePrefix(CardRenderer __instance, AnimeID id)
         {
-            if (ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value == false ||
+            bool enableAutoPlaceFishingItems = ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems?.Value ?? false;
+            
+            if (enableAutoPlaceFishingItems == false ||
                 EClass.core?.IsGameStarted == false ||
                 EClass._zone?.IsPCFaction == false ||
                 id != AnimeID.Jump ||
