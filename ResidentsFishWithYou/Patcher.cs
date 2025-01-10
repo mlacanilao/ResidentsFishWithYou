@@ -21,6 +21,13 @@ namespace ResidentsFishWithYou
         }
         
         [HarmonyPrefix]
+        [HarmonyPatch(declaringType: typeof(Zone), methodName: nameof(Zone.PetFollow), methodType: MethodType.Getter)]
+        public static bool ZonePetFollow(Zone __instance, ref bool __result)
+        {
+            return ZonePatch.PetFollowPrefix(__instance: __instance, __result: ref __result);
+        }
+        
+        [HarmonyPrefix]
         [HarmonyPatch(declaringType: typeof(CardRenderer), methodName: nameof(CardRenderer.PlayAnime), argumentTypes: new[] { typeof(AnimeID), typeof(Vector3), typeof(bool) })]
         public static bool CardRendererPlayAnime(CardRenderer __instance, AnimeID id)
         {

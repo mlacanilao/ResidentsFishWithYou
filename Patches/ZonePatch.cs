@@ -22,5 +22,18 @@ namespace ResidentsFishWithYou.Patches
 
             point = EClass.pc?.pos;
         }
+        
+        public static bool PetFollowPrefix(Zone __instance, ref bool __result)
+        {
+            if (EClass.core?.IsGameStarted == false ||
+                __instance?.IsPCFaction == false ||
+                EClass.pc?.ai is AI_Fish == false)
+            {
+                return true;
+            }
+        
+            __result = false;
+            return false;
+        }
     }
 }
