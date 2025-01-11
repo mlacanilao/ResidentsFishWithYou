@@ -7,18 +7,18 @@ namespace ResidentsFishWithYou
     {
         internal const string Guid = "omegaplatinum.elin.residentsfishwithyou";
         internal const string Name = "Residents Fish with You";
-        internal const string Version = "1.4.3.0";
+        internal const string Version = "1.4.5.0";
     }
 
     [BepInPlugin(GUID: ModInfo.Guid, Name: ModInfo.Name, Version: ModInfo.Version)]
     internal class ResidentsFishWithYou : BaseUnityPlugin
     {
         internal static ResidentsFishWithYou Instance { get; private set; }
-        
-        private void Start()
+
+        private void Awake()
         {
             Instance = this;
-            
+
             ResidentsFishWithYouConfig.LoadConfig(config: Config);
 
             Harmony.CreateAndPatchAll(type: typeof(Patcher), harmonyInstanceId: ModInfo.Guid);

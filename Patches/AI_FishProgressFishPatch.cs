@@ -67,7 +67,8 @@ namespace ResidentsFishWithYou.Patches
                 }
 
                 if (hasFishingWork == true &&
-                    chara.ai is AIWork_Fish == false)
+                    chara.ai is AIWork_Fish == false &&
+                    chara.ai is AI_Eat == false)
                 {
                     chara.TryMoveTowards(__instance.posWater);
                     
@@ -79,7 +80,8 @@ namespace ResidentsFishWithYou.Patches
                 }
 
                 if (hasFishingHobby == true &&
-                    chara.ai is AIWork_Fish == false)
+                    chara.ai is AIWork_Fish == false &&
+                    chara.ai is AI_Eat == false)
                 {
                     chara.TryMoveTowards(__instance.posWater);
 
