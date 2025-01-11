@@ -50,7 +50,7 @@ namespace ResidentsFishWithYou.Patches
                 
                 foreach (Hobby w in chara.ListWorks())
                 {
-                    if (w.Name.Contains("Fishing") == false)
+                    if (w.source.alias == "Fish" == false)
                     {
                         continue;
                     }
@@ -59,7 +59,7 @@ namespace ResidentsFishWithYou.Patches
                 
                 foreach (Hobby h in chara.ListHobbies())
                 {
-                    if (h.Name.Contains("Fishing") == false)
+                    if (h.source.alias == "Fish" == false)
                     {
                         continue;
                     }
