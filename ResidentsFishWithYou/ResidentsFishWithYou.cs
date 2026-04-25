@@ -1,32 +1,78 @@
-﻿using BepInEx;
+using System;
+using System.Runtime.CompilerServices;
+using BepInEx;
 using HarmonyLib;
+using ResidentsFishWithYou.UI;
 
-namespace ResidentsFishWithYou
+namespace ResidentsFishWithYou;
+
+internal static class ModInfo
 {
-    internal static class ModInfo
+    internal const string Guid = "omegaplatinum.elin.residentsfishwithyou";
+    internal const string Name = "Residents Fish With You";
+    internal const string Version = "2.0.0";
+    internal const string ModOptionsGuid = "evilmask.elinplugins.modoptions";
+}
+
+[BepInPlugin(GUID: ModInfo.Guid, Name: ModInfo.Name, Version: ModInfo.Version)]
+internal class ResidentsFishWithYou : BaseUnityPlugin
+{
+    internal static ResidentsFishWithYou? Instance { get; private set; }
+
+    private void Awake()
     {
-        internal const string Guid = "omegaplatinum.elin.residentsfishwithyou";
-        internal const string Name = "Residents Fish with You";
-        internal const string Version = "1.4.6.0";
+        Instance = this;
+        ResidentsFishWithYouConfig.LoadConfig(config: Config);
+        Harmony.CreateAndPatchAll(type: typeof(Patcher), harmonyInstanceId: ModInfo.Guid);
+
+        if (HasModOptionsPlugin() == false)
+        {
+            return;
+        }
+
+        try
+        {
+            UIController.RegisterUI();
+        }
+        catch (Exception ex)
+        {
+            LogError(message: $"An error occurred during UI registration: {ex}");
+        }
     }
 
-    [BepInPlugin(GUID: ModInfo.Guid, Name: ModInfo.Name, Version: ModInfo.Version)]
-    internal class ResidentsFishWithYou : BaseUnityPlugin
+    internal static void LogDebug(object message, [CallerMemberName] string caller = "")
     {
-        internal static ResidentsFishWithYou Instance { get; private set; }
+        Instance?.Logger.LogDebug(data: $"[{caller}] {message}");
+    }
+    
+    internal static void LogError(object message)
+    {
+        Instance?.Logger.LogError(data: message);
+    }
 
-        private void Awake()
+    private static bool HasModOptionsPlugin()
+    {
+        try
         {
-            Instance = this;
+            foreach (var obj in ModManager.ListPluginObject)
+            {
+                if (obj is not BaseUnityPlugin plugin)
+                {
+                    continue;
+                }
 
-            ResidentsFishWithYouConfig.LoadConfig(config: Config);
+                if (plugin.Info.Metadata.GUID == ModInfo.ModOptionsGuid)
+                {
+                    return true;
+                }
+            }
 
-            Harmony.CreateAndPatchAll(type: typeof(Patcher), harmonyInstanceId: ModInfo.Guid);
+            return false;
         }
-        
-        internal static void Log(object payload)
+        catch (Exception ex)
         {
-            Instance?.Logger.LogInfo(data: payload);
+            LogError(message: $"Error while checking for Mod Options: {ex}");
+            return false;
         }
     }
 }

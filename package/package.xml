@@ -1,0 +1,80 @@
+<Meta>
+  <title>Residents Fish With You</title>
+  <id>omegaplatinum.elin.residentsfishwithyou</id>
+  <author>OmegaPlatinum</author>
+  <loadPriority>100</loadPriority>
+  <description>
+    When you start fishing, residents and followers with a fishing hobby or fishing work will move towards your location and start fishing if a [b]Fishing Sign[/b] is available. While you are fishing, their tracked catches are dropped at your location.
+    あなたが釣りを開始すると、釣りの趣味または仕事を持つ住人や仲間があなたの場所に移動し、利用可能な[b]釣り場の立札[/b]がある場合、釣りを開始します。あなたが釣りをしている間、追跡された住人や仲間の釣果はあなたの場所にドロップします。
+    
+    [h1] Features [/h1]
+    [list]
+    [*] Residents and followers with a fishing hobby or fishing work will actively participate in fishing when you start fishing.
+    [*] Requires available [b]Fishing Signs[/b] for residents and followers to start fishing.
+    [*] While you are fishing, tracked resident and follower catches drop at your position instead of their position.
+    [*] Optionally send exact player catches and while-you-are-fishing resident/follower catches to containers whose permission is set to shared after fishing completes, including catches vanilla would otherwise pick up into the player's inventory.
+    [*] Optionally require bait for resident/follower invites and consume one player bait when a resident or follower catch is delivered to your position.
+    [*] Pets and followers temporarily stop auto-following while you are fishing so they can participate normally.
+    [/list]
+
+    [h1] Compatibility [/h1]
+    This mod works with existing save files.
+
+    [h1] Requirements [/h1]
+    This mod requires the [b]Mod Options[/b] mod only for accessing the Config menu. The core functionality of this mod will still work without it. Please subscribe to the [b]Mod Options[/b] mod for menu-based configuration:
+    [list]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341]https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341[/url]
+    [/list]
+
+    [h1] Configuration [/h1]
+    Adjust these settings via the configuration file:
+
+    [h2] Enable Auto Place Fishing Items [/h2]
+    Enable or disable automatically placing exact player catches and while-you-are-fishing resident/follower catches into containers whose permission is set to shared after fishing completes. When enabled, tracked catches can be moved to containers whose permission is set to shared even if vanilla would otherwise pick them up into the player's inventory.
+    [code] Default: false [/code]
+
+    [h2] Enable Resident Require Bait [/h2]
+    Enable or disable requiring bait for resident/follower invites and consuming one player bait when a resident or follower catch is delivered to your position.
+    [code] Default: false [/code]
+
+    [h1] Configuration File Location [/h1]
+    [code] Steam\steamapps\common\Elin\BepInEx\config\omegaplatinum.elin.residentsfishwithyou.cfg [/code]
+
+    [img] https://img.shields.io/badge/Supports%20Game%20Version-EA%2023.295%20Stable-green [/img]
+
+    [h1] 特徴 [/h1]
+    [list]
+    [*] 釣りの趣味や仕事を持つ住人や仲間が、あなたが釣りを開始するとその場に移動します。
+    [*] 住人や仲間が釣りを始めるには、利用可能な[b]釣り場の立札[/b]が必要です。
+    [*] あなたが釣りをしている間、追跡された住人や仲間の釣果は本人の位置ではなくあなたの位置にドロップします。
+    [*] 釣り完了後、プレイヤーの釣果と、あなたが釣りをしている間の住人や仲間の実際の釣果を、権限が「共有中」に設定されているコンテナへ送るオプションがあります。通常はプレイヤーのインベントリに入る釣果も対象です。
+    [*] 住人や仲間の招待に餌を必要とし、住人や仲間の釣果があなたの位置に届けられるときにプレイヤーの餌を1つ消費するオプションがあります。
+    [*] ペットや仲間が通常どおり参加できるよう、あなたが釣りをしている間は自動追従を一時的に停止します。
+    [/list]
+
+    [h1] 必須MOD [/h1]
+    このMODで [b]Mod Options[/b] MOD が必要なのは Config メニューへアクセスする場合だけです。主要な機能はこれがなくても動作します。メニューから設定したい場合は、以下の [b]Mod Options[/b] MOD を利用してください。
+    [list]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341]https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341[/url]
+    [/list]
+
+    [h1] 設定 [/h1]
+    これらの設定は設定ファイルから調整できます:
+
+    [h2] 釣りアイテムの自動配置設定 [/h2]
+    釣り完了後、プレイヤーの釣果と、あなたが釣りをしている間の住人や仲間の実際の釣果を、権限が「共有中」に設定されているコンテナへ自動配置するかどうかを設定します。有効にすると、追跡された釣果は通常プレイヤーのインベントリに入るものも、権限が「共有中」に設定されているコンテナへ移動できます。
+    [code] デフォルト: false [/code]
+
+    [h2] 住人が餌を必要とする設定 [/h2]
+    住人や仲間の招待に餌を必要とし、住人や仲間の釣果があなたの位置に届けられるときにプレイヤーの餌を1つ消費するかどうかを設定します。
+    [code] デフォルト: false [/code]
+
+    [h1] 設定ファイルの場所 [/h1]
+    [code] Steam\steamapps\common\Elin\BepInEx\config\omegaplatinum.elin.residentsfishwithyou.cfg [/code]
+
+    [img] https://img.shields.io/badge/対応ゲームバージョン-EA%2023.295%20Stable-green [/img]
+  </description>
+  <tags>General,Balance</tags>
+  <visibility>Public</visibility>
+  <version>0.23.295</version>
+</Meta>

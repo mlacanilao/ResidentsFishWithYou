@@ -1,44 +1,42 @@
-using ResidentsFishWithYou.Patches;
 using HarmonyLib;
-using UnityEngine;
+using ResidentsFishWithYou.Patches;
 
-namespace ResidentsFishWithYou
+namespace ResidentsFishWithYou;
+
+internal static class Patcher
 {
-    public class Patcher
+    [HarmonyPrefix]
+    [HarmonyPatch(declaringType: typeof(AI_Fish.ProgressFish), methodName: nameof(AI_Fish.ProgressFish.OnStart))]
+    internal static void AI_FishProgressFishOnStart(AI_Fish.ProgressFish __instance)
     {
-        [HarmonyPrefix]
-        [HarmonyPatch(declaringType: typeof(AI_Fish.ProgressFish), methodName: nameof(AI_Fish.ProgressFish.OnStart))]
-        public static bool AI_FishProgressFishOnStart(AI_Fish.ProgressFish __instance)
-        {
-            return AI_FishProgressFishPatch.OnStartPrefix(__instance: __instance);
-        }
-        
-        [HarmonyPrefix]
-        [HarmonyPatch(declaringType: typeof(Zone), methodName: nameof(Zone.AddCard), argumentTypes: new[] { typeof(Card), typeof(Point) })]
-        public static void ZoneAddCard(Zone __instance, Card t, ref Point point)
-        {
-            ZonePatch.AddCardPrefix(__instance: __instance, t:t, point: ref point);
-        }
-        
-        [HarmonyPrefix]
-        [HarmonyPatch(declaringType: typeof(Zone), methodName: nameof(Zone.PetFollow), methodType: MethodType.Getter)]
-        public static bool ZonePetFollow(Zone __instance, ref bool __result)
-        {
-            return ZonePatch.PetFollowPrefix(__instance: __instance, __result: ref __result);
-        }
-        
-        [HarmonyPrefix]
-        [HarmonyPatch(declaringType: typeof(CardRenderer), methodName: nameof(CardRenderer.PlayAnime), argumentTypes: new[] { typeof(AnimeID), typeof(Vector3), typeof(bool) })]
-        public static bool CardRendererPlayAnime(CardRenderer __instance, AnimeID id)
-        {
-            return CardRendererPatch.PlayAnimePrefix(__instance: __instance, id: id);
-        }
-        
-        [HarmonyPrefix]
-        [HarmonyPatch(declaringType: typeof(Chara), methodName: nameof(Chara.Pick))]
-        public static bool CharaPick()
-        {
-            return CharaPatch.PickPrefix();
-        }
+        AI_FishProgressFishPatch.OnStartPrefix(__instance: __instance);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(declaringType: typeof(AI_Fish.ProgressFish), methodName: nameof(AI_Fish.ProgressFish.OnProgressComplete))]
+    internal static void AI_FishProgressFishOnProgressComplete(AI_Fish.ProgressFish __instance)
+    {
+        AI_FishPatch.OnProgressCompletePostfix(__instance: __instance);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(declaringType: typeof(AI_Fish), methodName: nameof(AI_Fish.Makefish))]
+    internal static void AI_FishMakefish(Chara c, Thing __result)
+    {
+        AI_FishPatch.MakefishPostfix(c: c, __result: __result);
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(declaringType: typeof(Zone), methodName: nameof(Zone.AddCard), argumentTypes: new[] { typeof(Card), typeof(Point) })]
+    internal static void ZoneAddCard(Zone __instance, Card t, ref Point point)
+    {
+        ZonePatch.AddCardPrefix(__instance: __instance, t: t, point: ref point);
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(declaringType: typeof(Zone), methodName: nameof(Zone.PetFollow), methodType: MethodType.Getter)]
+    internal static bool ZonePetFollow(Zone __instance, ref bool __result)
+    {
+        return ZonePatch.PetFollowPrefix(__instance: __instance, __result: ref __result);
     }
 }
