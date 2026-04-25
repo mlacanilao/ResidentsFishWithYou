@@ -8,8 +8,6 @@ namespace ResidentsFishWithYou.UI;
 
 public static class UIController
 {
-    private const string GeneralLangId = "general";
-
     public static void RegisterUI()
     {
         ModOptionController controller = ModOptionController.Register(guid: ModInfo.Guid, tooptipId: "mod.tooltip");
@@ -20,9 +18,19 @@ public static class UIController
         }
 
         string assemblyLocation = Path.GetDirectoryName(path: Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+        string xmlPath = Path.Combine(path1: assemblyLocation, path2: "ResidentsFishWithYouConfig.xml");
         string xlsxPath = Path.Combine(path1: assemblyLocation, path2: "translations.xlsx");
 
         ResidentsFishWithYouConfig.InitializeTranslationXlsxPath(xlsxPath: xlsxPath);
+
+        if (File.Exists(path: xmlPath))
+        {
+            controller.SetPreBuildWithXml(xml: File.ReadAllText(path: xmlPath));
+        }
+        else
+        {
+            ResidentsFishWithYou.LogError(message: $"Mod Options XML not found: {xmlPath}");
+        }
 
         if (File.Exists(path: ResidentsFishWithYouConfig.TranslationXlsxPath))
         {
@@ -40,25 +48,41 @@ public static class UIController
     {
         controller.OnBuildUI += builder =>
         {
-            OptVLayout optionsGroup = builder.Root.AddVLayoutWithBorder(title: Lang.Get(GeneralLangId));
-            AddConfigToggle(
-                parent: optionsGroup,
+            BindConfigToggle(
+                toggle: GetRequiredPreBuild<OptToggle>(
+                    builder: builder,
+                    id: "enableAutoPlaceFishingItemsToggle"),
                 configEntry: ResidentsFishWithYouConfig.EnableAutoPlaceFishingItems);
-            AddConfigToggle(
-                parent: optionsGroup,
+            BindConfigToggle(
+                toggle: GetRequiredPreBuild<OptToggle>(
+                    builder: builder,
+                    id: "enableRequireBaitToggle"),
                 configEntry: ResidentsFishWithYouConfig.EnableRequireBait);
         };
     }
 
-    private static void AddConfigToggle(OptLayout parent, ConfigEntry<bool> configEntry)
+    private static void BindConfigToggle(OptToggle? toggle, ConfigEntry<bool> configEntry)
     {
-        OptToggle toggle = parent.AddToggle(
-            text: configEntry.Definition.Key,
-            isChecked: configEntry.Value,
-            tooltip: configEntry.Description.Description);
+        if (toggle == null)
+        {
+            return;
+        }
+
+        toggle.Checked = configEntry.Value;
         toggle.OnValueChanged += isChecked =>
         {
             configEntry.Value = isChecked;
         };
+    }
+
+    private static T? GetRequiredPreBuild<T>(OptionUIBuilder builder, string id) where T : OptUIElement
+    {
+        T? element = builder.GetPreBuild<T>(id: id);
+        if (element == null)
+        {
+            ResidentsFishWithYou.LogError(message: $"Missing Mod Options prebuilt element: {id}");
+        }
+
+        return element;
     }
 }
