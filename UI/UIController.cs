@@ -21,11 +21,12 @@ public static class UIController
         string xmlPath = Path.Combine(path1: assemblyLocation, path2: "ResidentsFishWithYouConfig.xml");
         string xlsxPath = Path.Combine(path1: assemblyLocation, path2: "translations.xlsx");
 
+        ResidentsFishWithYouConfig.InitializeXmlPath(xmlPath: xmlPath);
         ResidentsFishWithYouConfig.InitializeTranslationXlsxPath(xlsxPath: xlsxPath);
 
-        if (File.Exists(path: xmlPath))
+        if (File.Exists(path: ResidentsFishWithYouConfig.XmlPath))
         {
-            controller.SetPreBuildWithXml(xml: File.ReadAllText(path: xmlPath));
+            controller.SetPreBuildWithXml(xml: File.ReadAllText(path: ResidentsFishWithYouConfig.XmlPath));
         }
         else
         {

@@ -1,4 +1,5 @@
 using BepInEx.Configuration;
+using System.IO;
 using UnityEngine;
 
 namespace ResidentsFishWithYou;
@@ -7,6 +8,7 @@ internal static class ResidentsFishWithYouConfig
 {
     internal static ConfigEntry<bool> EnableAutoPlaceFishingItems = null!;
     internal static ConfigEntry<bool> EnableRequireBait = null!;
+    internal static string XmlPath { get; private set; } = string.Empty;
     internal static string TranslationXlsxPath { get; private set; } = string.Empty;
 
     internal static void LoadConfig(ConfigFile config)
@@ -36,8 +38,27 @@ internal static class ResidentsFishWithYouConfig
         );
     }
 
+    internal static void InitializeXmlPath(string xmlPath)
+    {
+        if (File.Exists(path: xmlPath))
+        {
+            XmlPath = xmlPath;
+        }
+        else
+        {
+            XmlPath = string.Empty;
+        }
+    }
+
     internal static void InitializeTranslationXlsxPath(string xlsxPath)
     {
-        TranslationXlsxPath = xlsxPath;
+        if (File.Exists(path: xlsxPath))
+        {
+            TranslationXlsxPath = xlsxPath;
+        }
+        else
+        {
+            TranslationXlsxPath = string.Empty;
+        }
     }
 }
